@@ -5,16 +5,18 @@ import axios from 'axios'
 import url from '../../modules/js/api.js'
 
 
+
 let app=new Vue({
   el: '#app',
   data: {
-    lists: []
+    lists:null
   },
-  created() {
+  created:function() {
     axios.post(url.hotLists, {
       pageNum: 1,
-      pageSize: 5
+      pageSize: 6
     }).then((res) => {
+      console.log(res)
       this.lists = res.data.lists
     })
 
