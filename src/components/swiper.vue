@@ -2,7 +2,7 @@
 
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swp-page swiper-slide" v-for="list in lists">
+        <div class="swp-page swiper-slide" v-for="list in lists" :key="list.index">
           <a class="js-no-follow" :href="list.clickUrl">
             <img class="goods-main-photo fadeIn" :src="list.img">
           </a>
@@ -28,12 +28,9 @@
           }
         },
     mounted() {
-      var mySwiper = new Swiper ('.swiper-container', {
-        // direction: 'vertical', // 垂直切换选项
+      var mySwiper = new Swiper ('.swiper-container', {     
         loop: true, // 循环模式选项
         autoplay:true,
-
-
         pagination: {
           el: '.swiper-pagination',
         },
