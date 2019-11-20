@@ -3,7 +3,8 @@ let url = {
   bannerlists:'/index/banner',
   topList: '/category/topList',
   rank:'/category/rank',
-  subList:'/category/subList'
+  subList:'/category/subList',
+  searchList:'/search/list'
 };
 
 let host = 'http://rap2api.taobao.org/app/mock/7058';

@@ -1,25 +1,57 @@
 <template>
   <div class="bottom-nav">
     <ul>
-      <li class="active"><a href="index.html"><i class="icon-home"></i>
-        <div>有赞</div>
+      <li v-for="(list,index) in navConfig " :class="{active:index==curIndex}" @click="changeNav(list,index)"><a :href="list.href"><i :class="list.icon"></i>
+        <div>{{list.name}}</div>
       </a></li>
-      <li><a href="category.html"><i class="icon-category"></i>
-        <div>分类</div>
-      </a></li>
-      <li><a href="https://h5.youzan.com/v2/trade/cart?f_platform=yzapp&amp;source=yzapp"><i class="icon-cart"></i>
-        <div>购物车</div>
-      </a></li>
-      <li><a href="https://h5.youzan.com/v2/buyer/member"><i class="icon-user"></i>
-        <div>我</div>
-      </a></li>
+
     </ul>
   </div>
 </template>
 
 <script>
+  import qs from 'qs';
+  let {index}=qs.parse(location.search.substr(1));
+    let navConfig = [{
+        name: '有赞',
+        href: 'index.html',
+        icon: 'icon-home'
+
+    }, {
+        name: '分类',
+        href: 'category.html',
+        icon: 'icon-category'
+
+    }, {
+        name: '购物车',
+        href: 'cart.html',
+        icon: 'icon-cart'
+
+    }, {
+        name: '我',
+        href: 'member.html',
+        icon: 'icon-user'
+
+    }];
+
+
     export default {
-        name: "Foot"
+        name: "Foot",
+        data() {
+            return {
+                navConfig,
+                curIndex:parseInt(index) || 0
+            }
+        },
+        methods:{
+            changeNav(list,index){
+                console.log(list.href);
+                location.href=`${list.href}?index=${index}`;
+                window.event.returnValue=false;
+
+            }
+
+        }
     }
 </script>
 
@@ -30,7 +62,7 @@
     height: 50px;
     bottom: 0;
     background-color: #fff;
-    z-index: 8;
+    z-index: 9999;
     -o-border-image: url(https://b.yzcdn.cn/v2/image/wap/border-line-2.png) 2 stretch;
     border-image: url(https://b.yzcdn.cn/v2/image/wap/border-line-2.png) 2 stretch;
     border-top: 2px solid #e5e5e5

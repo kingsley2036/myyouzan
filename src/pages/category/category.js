@@ -24,7 +24,7 @@ new vue({
     getToplists(){
       axios.get(url.topList).then(res=>{
         this.toplists=res.data.lists;
-      
+
       });
     },
     getSublist(id,index){
@@ -34,24 +34,28 @@ new vue({
       }else{
         axios.get(url.subList,{id:id}).then(res=>{
           this.subData=res.data.data;
-          
+
         });
       }
     },
     getRank(){
       axios.get(url.rank).then(res=>{
-       
+
         this.rankData=res.data.data;
         console.log(res.data.data)
       });
+    },
+    toSearch(list){
+      location.href=`search.html?keyword=${list.name}&id=${list.id}`;
+      // window.event.returnValue=false;
     }
-   
+
   },
   filters:{
     addPoint(num){
-      var value=Math.round(parseFloat(num)*100)/100;
-      var arry=value.toString().split('.');
-      if (arry.length==1){
+      let value=Math.round(parseFloat(num)*100)/100;
+      let arry=value.toString().split('.');
+      if (arry.length===1){
         value=value.toString()+'.00';
         return value;
       }else{
@@ -62,4 +66,4 @@ new vue({
       }
     }
   }
-})
+});

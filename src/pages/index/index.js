@@ -11,6 +11,8 @@ import Foot from "components/Foot";
 import swiper from 'components/swiper.vue'
 Vue.use(InfiniteScroll);
 
+
+
 let app=new Vue({
   el: '#app',
   data: {
