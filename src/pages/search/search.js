@@ -1,25 +1,15 @@
 import 'css/common.css';
 import './search.css'
-import vue from 'vue'
+import Vue from 'vue'
 import axios from 'axios'
 import url from "js/api";
 import qs from 'qs'
+import velocity from 'velocity-animate'
+import mixin from "js/mixin";
 
-let {keyword, id} = qs.parse(location.search.substr(1))
-vue.filter('addPoint', function (num) {
-  let value=Math.round(parseFloat(num)*100)/100;
-  let arry=value.toString().split('.');
-  if (arry.length===1){
-    value=value.toString()+'.00';
-    return value;
-  }else{
-    if(arry[1].length<2){
-      value=value.toString()+'0';
-    }
-    return value;
-  }
-});
-new vue({
+let {keyword, id} = qs.parse(location.search.substr(1));
+
+new Vue({
   el: '.container',
   data: {
     keyword,
@@ -45,13 +35,17 @@ new vue({
       })
     },
     move(){
-      if(document.body.scrollTop > 10){
+      if(document.documentElement.scrollTop > 100){
         this.isShow=true
       }else {
         this.isShow=false;
       }
+    },
+    gotoTop(){
+     velocity(document.body,'scroll',{duration:1000})
     }
 
   },
+  mixins:[mixin]
 
 });

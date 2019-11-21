@@ -3,8 +3,8 @@ import './category.css'
 import vue from 'vue'
 import axios from 'axios'
 import url from "js/api";
-import Foot from "../../components/Foot";
-
+// import Foot from "../../components/Foot";
+import mixin from "js/mixin";
 new vue({
   el:'#app',
   data:{
@@ -13,9 +13,7 @@ new vue({
     subData:null,
     rankData:null
   },
-  components:{
-    Foot
-  },
+
   created(){
     this.getToplists();
     this.getSublist(0,0);
@@ -51,19 +49,6 @@ new vue({
     }
 
   },
-  filters:{
-    addPoint(num){
-      let value=Math.round(parseFloat(num)*100)/100;
-      let arry=value.toString().split('.');
-      if (arry.length===1){
-        value=value.toString()+'.00';
-        return value;
-      }else{
-        if(arry[1].length<2){
-          value=value.toString()+'0';
-        }
-        return value;
-      }
-    }
-  }
+
+  mixins:[mixin]
 });
