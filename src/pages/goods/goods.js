@@ -26,7 +26,10 @@ new Vue({
     dealList: null,
     bannerlists:[],
     skuType:1,
-    showSku:false
+    showSku:false,
+    skuNum:1,
+    isAddCart:false,
+    showAddMsg:false,
   },
   components:{
     swiper
@@ -76,6 +79,29 @@ new Vue({
       this.showSku=true;
 
     },
+    changeSkuNum(num){
+      if(num===-1 && this.skuNum===1){
+       return;
+      }
+      this.skuNum+=num;
+    },
+    addCart(){
+      axios.post(url.cartAdd,{
+        id:this.id,
+        number:this.skuNum
+      }).then((res)=>{
+        if(res.data.status===200){
+          this.showSku=false;
+          this.isAddCart=true;
+          this.showAddMsg=true;
+
+          setTimeout(()=>{
+            this.showAddMsg=false;
+          },1000)
+
+        }
+      })
+    }
 
   },
   watch:{

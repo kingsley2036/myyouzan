@@ -6,7 +6,13 @@ let url = {
   subList:'/category/subList',
   searchList:'/search/list',
   details:'/goods/details',
-  dealList:'/goods/deal'
+  dealList:'/goods/deal',
+  cartAdd:'/cart/add',
+  carLists:'/cart/list',
+  cartUpdate:'/cart/update',
+  cartReduce:'/cart/reduce',
+  cartRemove:'/cart/remove',
+  cartMrremove:'/cart/mrremove'
 
 };
 
