@@ -1,10 +1,12 @@
 <template>
   <div>
-    地址管理
+    <router-view>
+
+    </router-view>
   </div>
 </template>
 <style scoped>
-  @import "address.css";
   @import "address_base.css";
+  @import "address.css";
 
 </style>
