@@ -16,7 +16,7 @@
 
 <script>
   import Swiper from 'Swiper'
-  import 'swiper/css/swiper.css'
+
   export default {
         name: "swiper",
         props:{
@@ -41,5 +41,5 @@
 </script>
 
 <style scoped>
-
+ @import "../../node_modules/swiper/css/swiper.css";
 </style>

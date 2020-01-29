@@ -26,7 +26,8 @@ module.exports = {
       '@': resolve('src'),
       'css':'@/modules/css',
       'js':'@/modules/js',
-      'components':'@/components'
+      'components':'@/components',
+      'swiper': 'swiper/js/swiper.js'
     }
   },
   module: {
@@ -39,7 +40,12 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('src'), 
+        resolve('test'),
+        resolve('node_modules/dom7'),
+        resolve('node_modules/swiper'),
+        
+      ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

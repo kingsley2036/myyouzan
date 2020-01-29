@@ -49,22 +49,14 @@ export default {
 
       if(this.type==='add'){
 
-        // axios.post(url.addressAdd,data).then(res=>{
-        //   this.$router.go(-1)
-        //   }
-        //
-        // )
+       
         this.$store.dispatch('addAuction',data)
       }
       if(this.type==="edit"){
         data.id=this.id;
-        console.log(data);
-        this.$store.dispatch('updateAuction',data)
-        // axios.post(url.addressUpdate,data).then(res=>{
-        //     this.$router.go(-1)
-        // }
-        //
-        // )
+        
+        this.$store.dispatch('updateAuction',data);
+      
 
       }
 

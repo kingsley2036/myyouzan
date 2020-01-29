@@ -29,7 +29,7 @@
     export default {
        computed:{
            addressList(){
-              return   this.$store.state.lists;
+              return  this.$store.state.lists;
            }
        },
         created() {
